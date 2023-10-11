@@ -1,0 +1,16 @@
+<div class="body">
+    <div class="taskbar">
+        <div class="welcome">
+            Xin chào,
+            <label class="user">{{user}}</label><br/>
+            <button (click)="logout()">Đăng xuất</button>
+        </div>
+        <div class="diagnostic">
+            <a class="button" (click)="tabChange('diagnostic')">
+                <i class="button-icon fas fa-home"></i>
+                <div class="button-text">Chuẩn đoán</div>
+            </a>
+        </div>
+    </div>
+</div>
+
