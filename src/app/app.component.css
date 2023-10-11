@@ -1,6 +1,6 @@
 #background {
-    
-    background-size: 100% 100%;
+    background-image: url(./img/ICON.png);
+    background-size: 50% 80%;
     height: 100vh;
     overflow: auto;
 }
@@ -15,7 +15,7 @@
 #logo {
     height: 150px;
     width: 15%;
-    background-color: darkcyan;
+    background-color: darkorange;
     cursor: pointer;
 }
 
