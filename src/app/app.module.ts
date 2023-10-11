@@ -2,30 +2,40 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { TaskbarComponent } from './taskbar/taskbar.component';
-import { TaskbarCgComponent } from './taskbar-cg/taskbar-cg.component';
-import { TaskbarKsComponent } from './taskbar-ks/taskbar-ks.component';
-import { TaskbarQtvComponent } from './taskbar-qtv/taskbar-qtv.component';
 
+
+import { RouterModule, Routes } from '@angular/router';
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  
+]
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    TaskbarComponent,
-    TaskbarCgComponent,
-    TaskbarKsComponent,
-    TaskbarQtvComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } 
+    ),
+    HttpClientModule,
+    FormsModule,
+   
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
