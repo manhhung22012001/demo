@@ -11,15 +11,15 @@ export class AuthService {
   ID_USER = 'id_user';
   public username: string | undefined;
   public password: string | undefined;
-  public permission: string | undefined;
+  
   public id: any;
   results: string[] | undefined;
   constructor(private http: HttpClient) { }
-  login(username: string, permission:string, password: string) {
+  login(username: string, password: string) {
     var params = new HttpParams()
       .set('username', username)
       .set('password', password)
-      .set('permission',permission);
+     
     return this.http.post<Response>(this.BASE_PATH + "/auth/login", params, { observe: 'response' });
   }
   register(user: string, pass: string, fullname: string, phonenumber: number, role: string) {
