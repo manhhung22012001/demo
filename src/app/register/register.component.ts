@@ -26,15 +26,13 @@ export class RegisterComponent implements OnInit {
       var code = response.status;
       if (code === 201) {
         this.message = "Đăng ký thành công";
-      } else {
-        this.message = "Đăng ký thất bại";
-      }
+      } 
     },
     (error: HttpErrorResponse) => { // Handle errors
       if (error.status === 400) {
-        this.message = "Dữ liệu không hợp lệ";
+        this.message = "Vui lòng nhập đầy đủ thông tin";
       } else if (error.status === 404) {
-        this.message = "Tài khoản đã tồn tại";
+        this.message = "Tên đăng nhập đã tồn tại";
       } else {
         this.message = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
       }
