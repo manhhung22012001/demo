@@ -1,42 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { HttpErrorResponse } from '@angular/common/http'; // Import HttpErrorResponse
+import { HttpErrorResponse } from '@angular/common/http';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  message: string | undefined;
+  registerForm = this.fb.group({
+    username: [null, Validators.required],
+    password: [null, Validators.required],
+    fullname: [null, Validators.required],
+    phonenumber: [null, Validators.required],
+    role: [null, Validators.required]
+  });
 
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) { }
-  message: string | undefined;
-  registerForm: any = this.fb.group({
-    username: [''],
-    password: [''],
-    fullname: [''],
-    phonenumber: [''],
-    role: ['']
-  });
+
   ngOnInit(): void {
   }
+
   register() {
-    this.authService.register(this.registerForm.value.username, this.registerForm.value.password, this.registerForm.value.fullname, this.registerForm.value.phonenumber, this.registerForm.value.role).subscribe(response => {
-      var code = response.status;
-      if (code === 201) {
-        this.message = "Đăng ký thành công";
-      } 
-    },
-    (error: HttpErrorResponse) => { // Handle errors
-      if (error.status === 400) {
-        this.message = "Vui lòng nhập đầy đủ thông tin";
-      } else if (error.status === 404) {
-        this.message = "Tên đăng nhập đã tồn tại";
-      } else {
-        this.message = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
-      }
+    const username = this.registerForm.value.username;
+    const password = this.registerForm.value.password;
+    const fullname = this.registerForm.value.fullname;
+    const phonenumber = this.registerForm.value.phonenumber;
+    const role = this.registerForm.value.role;
+
+    if (fullname && phonenumber && username && password && role) {
+      this.authService.register(fullname, phonenumber, username ,password, role).subscribe(response => {
+        var code = response.status;
+        if (code === 201) {
+          this.message = "Đăng ký thành công";
+        }
+      },
+        (error: HttpErrorResponse) => {
+          if (error.status === 400) {
+            this.message = "Tên đăng nhập đã tồn tại";
+          }  else {
+            this.message = "Đã xảy ra lỗi. Vui lòng thử lại sau.";
+          }
+        }
+      );
+    } else {
+      this.message = "Vui lòng nhập đầy đủ thông tin.";
     }
-    );
   }
 }
