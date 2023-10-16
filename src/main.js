@@ -5,12 +5,13 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+function a() {
   "use strict";
 
   /**
    * Easy selector helper function
    */
+  function myFunction(){}
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
@@ -285,5 +286,12 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
-
-})()
+  
+  
+   
+  
+    return {
+      myFunction: myFunction
+    }
+  
+};

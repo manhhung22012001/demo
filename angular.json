@@ -92,7 +92,14 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/main.js"
+              "src/main.js",
+              "src/app/img/assets/vendor/bootstrap/js/bootstrap.bundle.js",
+              "src/app/img/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
+              "src/app/img/assets/vendor/bootstrap/js/bootstrap.esm.js",
+              "src/app/img/assets/vendor/bootstrap/js/bootstrap.esm.min.js",
+              "src/app/img/assets/vendor/bootstrap/js/bootstrap.js",
+              "src/app/img/assets/vendor/bootstrap/js/bootstrap.min.js",
+              "src/app/img/assets/vendor/aos/aos.cjs.js"
             ]
           }
         }
